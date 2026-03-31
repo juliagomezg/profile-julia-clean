@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julia Gómez - Escritora Creativa & Desarrolladora</title>
+    <meta name="description" content="Julia Gómez: Escritora creativa y desarrolladora de IA. Creando narrativas digitales y aplicaciones inteligentes con impacto social.">
+    <meta name="keywords" content="escritora creativa, desarrolladora IA, narrativa digital, machine learning, inteligencia artificial, storytelling, tech writer, AI applications, creative writing, Julia Gómez">
+    <meta name="author" content="Julia Gómez">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://juliagomezg.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://juliagomezg.com/">
+    <meta property="og:title" content="Julia Gómez - Creative Writer & AI Developer">
+    <meta property="og:description" content="Escritora creativa y desarrolladora de IA. Creando narrativas digitales y aplicaciones inteligentes con impacto social.">
+    <meta property="og:image" content="https://juliagomezg.com/img/cerebro.png">
+    <meta property="og:site_name" content="Julia Gómez Portfolio">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://juliagomezg.com/">
+    <meta property="twitter:title" content="Julia Gómez - Creative Writer & AI Developer">
+    <meta property="twitter:description" content="Escritora creativa y desarrolladora de IA. Creando narrativas digitales y aplicaciones inteligentes con impacto social.">
+    <meta property="twitter:image" content="https://juliagomezg.com/img/cerebro.png">
+    <meta name="twitter:creator" content="@juliagomez19">
+    <meta name="twitter:site" content="@juliagomez19">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#5a91ef">
+    <meta name="msapplication-TileColor" content="#5a91ef">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #2d2d2d;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent: #5a91ef;
+            --accent-secondary: #ffe271;
+            --accent-coral: #f77a7a;
+            --red-disruptive: #dd1928;
+            --pure-white: #ffffff;
+            --bg-light: #fafcff;
+            --border: #e8f0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: white;
+            overflow-x: hidden;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            opacity: 0;
+            animation: slideDown 1s ease 0.5s forwards;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            opacity: 0;
+            animation: slideUp 1.2s ease 0.8s forwards;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-primary);
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            position: relative;
+            text-transform: uppercase;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: #dd1928;
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: left;
+        }
+
+        .hero-cta:hover::before {
+            width: 120%;
+        }
+
+        .hero-cta:hover {
+            gap: 1.2rem;
+            color: #dd1928;
+            transform: translateX(8px);
+        }
+
+        .hero-cta span {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover span {
+            transform: translateX(4px);
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            animation: slideUp 1.2s ease 1s forwards;
+        }
+
+        .hero-card {
+            background: var(--pure-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            position: relative;
+            background-image: url('img/lineas.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--accent-secondary));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .specialties {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .specialty {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .specialty:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .specialty-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .specialty-type {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--accent-secondary);
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .section-title:hover::before {
+            width: 120%;
+        }
+
+        .section-title:hover {
+            color: var(--accent-secondary);
+            transform: translateY(-3px);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent));
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .section-title:not(:hover)::after {
+            opacity: 1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .project {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(247, 122, 122, 0.15);
+            border-color: var(--accent-coral);
+        }
+
+        .project-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(90, 145, 239, 0.1), rgba(255, 226, 113, 0.1));
+            z-index: 1;
+        }
+
+        .project-image .emoji {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-coral);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            background: rgba(247, 122, 122, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .project-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-secondary);
+            transition: width 0.4s ease;
+        }
+
+        .project-link:hover::before {
+            width: 80%;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+            color: var(--accent-secondary);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .newsletter-content {
+            background: linear-gradient(135deg, var(--bg-light), rgba(90, 145, 239, 0.05));
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(90, 145, 239, 0.08);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            border-radius: 16px 16px 0 0;
+        }
+
+        .newsletter-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .newsletter-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .newsletter-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--accent);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .newsletter-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(90, 145, 239, 0.3);
+            gap: 1.2rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--bg-light), rgba(255, 226, 113, 0.1));
+            position: relative;
+            padding: 8rem 2rem;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-image: url('img/piezas.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top right;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            position: sticky;
+            top: 8rem;
+        }
+
+        .about-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .about-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--red-disruptive);
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .about-title:hover::before {
+            width: 120%;
+        }
+
+        .about-title:hover {
+            color: var(--red-disruptive);
+            transform: translateX(8px);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--pure-white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(90, 145, 239, 0.15);
+        }
+
+        .stat:nth-child(1) .stat-number { color: var(--accent); }
+        .stat:nth-child(2) .stat-number { color: var(--accent-secondary); }
+        .stat:nth-child(3) .stat-number { color: var(--accent-coral); }
+        .stat:nth-child(4) .stat-number { color: var(--accent); }
+
+        .stat-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            background-image: url('img/sobre-colores.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+
+        .contact > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .contact-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--red-disruptive);
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .contact-title:hover::before {
+            width: 120%;
+        }
+
+        .contact-title:hover {
+            color: var(--red-disruptive);
+            transform: translateY(-3px);
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--pure-white);
+        }
+
+        .contact-link:nth-child(1) .contact-icon { background: var(--accent); }
+        .contact-link:nth-child(2) .contact-icon { background: var(--accent-secondary); color: var(--text-primary); }
+        .contact-link:nth-child(3) .contact-icon { background: var(--accent-coral); }
+        .contact-link:nth-child(4) .contact-icon { background: var(--accent); }
+
+        /* Profile Photo */
+        .hero-photo {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-photo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 8px 25px rgba(90, 145, 239, 0.3);
+        }
+
+        .hero-photo::after {
+            content: '🤖';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 35px;
+            height: 35px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid var(--accent-coral);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .about-text {
+                position: static;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .projects,
+            .newsletter,
+            .about,
+            .contact {
+                padding: 6rem 1rem;
+            }
+
+            .newsletter-content {
+                padding: 3rem 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project {
+                min-width: auto;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Julia Gómez</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-photo">
+                    <img src="img/cerebro.png" alt="Julia Gómez">
+                </div>
+                <div class="hero-eyebrow">Portfolio 2025</div>
+                <h1 class="hero-title">Julia Gómez</h1>
+                <p class="hero-subtitle">
+                    Escritora Creativa & Desarrolladora enfocada en Inteligencia Artificial
+                </p>
+                <p class="hero-description">
+                    Explorando la intersección entre narrativa humana e inteligencia artificial. 
+                    Creando contenido que conecta tecnología con propósito social.
+                </p>
+                <a href="#projects" class="hero-cta">
+                    Ver mi trabajo
+                    <span>→</span>
+                </a>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-label">Especialidades</div>
+                    <div class="specialties">
+                        <div class="specialty">
+                            <span class="specialty-name">Narrativa Digital</span>
+                            <span class="specialty-type">Escritura</span>
+                        </div>
+                        <div class="specialty">
+                            <span class="specialty-name">Machine Learning</span>
+                            <span class="specialty-type">AI Development</span>
+                        </div>
+                        <div class="specialty">
+                            <span class="specialty-name">Frontend Development</span>
+                            <span class="specialty-type">Code</span>
+                        </div>
+                        <div class="specialty">
+                            <span class="specialty-name">Tech Mentoring</span>
+                            <span class="specialty-type">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header animate-on-scroll">
+            <div class="section-eyebrow">Proyectos seleccionados</div>
+            <h2 class="section-title">Trabajo reciente</h2>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/cerebro.png');">
+                    <div class="emoji">🤖</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">AI Development</div>
+                    <h3 class="project-title">Content AI Generator</h3>
+                    <p class="project-description">
+                        Sistema de inteligencia artificial que genera contenido editorial personalizado, 
+                        combinando modelos de lenguaje con técnicas de storytelling humano.
+                    </p>
+                    <a href="#" class="project-link">
+                        Explorar proyecto
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/escritorio.png');">
+                    <div class="emoji">📚</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Escritura</div>
+                    <h3 class="project-title">"La Puerta de mi Pueblo"</h3>
+                    <p class="project-description">
+                        Obra literaria que explora las conexiones entre tradición y modernidad, 
+                        narrando historias que conectan generaciones a través de la tecnología.
+                    </p>
+                    <a href="#" class="project-link">
+                        Leer extracto
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/piezas.png');">
+                    <div class="emoji">⚖️</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">AI Ethics</div>
+                    <h3 class="project-title">Bias Detection Research</h3>
+                    <p class="project-description">
+                        Investigación sobre sesgos en modelos de lenguaje, desarrollando métricas 
+                        para evaluar fairness en sistemas de IA aplicados a contenido en español.
+                    </p>
+                    <a href="#" class="project-link">
+                        Ver paper
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/colores-calidos.png');">
+                    <div class="emoji">🌱</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Social Impact</div>
+                    <h3 class="project-title">Smart Food Distribution</h3>
+                    <p class="project-description">
+                        Sistema de IA para BAMX Hermosillo que optimiza rutas de distribución 
+                        y predice necesidades comunitarias usando datos demográficos.
+                    </p>
+                    <a href="#" class="project-link">
+                        Ver impacto
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/colores-fuertes.png');">
+                    <div class="emoji">💻</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Web Development</div>
+                    <h3 class="project-title">Sustainable Real Estate Platform</h3>
+                    <p class="project-description">
+                        Plataforma web con IA integrada para recomendaciones de propiedades 
+                        ecológicas basadas en preferencias y patrones de sostenibilidad.
+                    </p>
+                    <a href="https://github.com/juliagomezg/PaginaInmobiliaria" class="project-link">
+                        Ver código
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="project animate-on-scroll">
+                <div class="project-image" style="background-image: url('img/lineas.png');">
+                    <div class="emoji">🎨</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Creative Design</div>
+                    <h3 class="project-title">Visual Data Stories</h3>
+                    <p class="project-description">
+                        Proyecto de visualización de datos que combina diseño gráfico con narrativa, 
+                        convirtiendo información compleja en historias visuales comprensibles.
+                    </p>
+                    <a href="#" class="project-link">
+                        Explorar diseños
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content animate-on-scroll">
+            <div class="newsletter-icon">🤖</div>
+            <h3 class="newsletter-title">AI & Narrativa</h3>
+            <p class="newsletter-description">Ideas semanales sobre IA, escritura creativa y tech con impacto social</p>
+            <a href="#" class="newsletter-cta">Suscribirse al newsletter →</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text animate-on-scroll">
+                <h2 class="about-title">Sobre mí</h2>
+                <p class="about-description">
+                    Soy una escritora creativa y desarrolladora de inteligencia artificial, 
+                    enfocada en crear narrativas digitales y aplicaciones inteligentes que 
+                    amplifica la creatividad humana y genera impacto social positivo.
+                </p>
+                <p class="about-description">
+                    Mi trabajo se sitúa en la intersección entre narrativa, código y machine learning, 
+                    siempre con una perspectiva ética y un compromiso con la inclusión tecnológica.
+                </p>
+            </div>
+
+            <div class="stats animate-on-scroll">
+                <div class="stat">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Años en IA</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Proyectos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2.4K</span>
+                    <span class="stat-label">Seguidores</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Mentees</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="animate-on-scroll">
+            <h2 class="contact-title">Conectemos</h2>
+            <p class="contact-subtitle">
+                ¿Tienes un proyecto de IA con impacto social? ¿Necesitas mentoría en tech? 
+                ¿Quieres colaborar en contenido editorial? Hablemos.
+            </p>
+
+            <div class="contact-links">
+                <a href="mailto:juliagomez19@gmail.com" class="contact-link">
+                    <div class="contact-icon">@</div>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com/in/juliagomezg" class="contact-link">
+                    <div class="contact-icon">in</div>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/juliagomezg" class="contact-link">
+                    <div class="contact-icon">{ }</div>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://instagram.com/juliagomezg" class="contact-link">
+                    <div class="contact-icon">📷</div>
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate projects with stagger
+        document.querySelectorAll('.project').forEach((project, index) => {
+            setTimeout(() => {
+                observer.observe(project);
+            }, index * 100);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html> 

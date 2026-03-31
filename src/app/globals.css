@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-dark: #2d2d2d;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent: #5a91ef;
+  --accent-secondary: #ffe271;
+  --accent-coral: #f77a7a;
+  --red-disruptive: #dd1928;
+  --pure-white: #ffffff;
+  --bg-light: #fafcff;
+  --border: #e8f0ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: white;
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 1s ease 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up {
+  animation: slideUp 1.2s ease 0.8s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delay {
+  animation: slideUp 1.2s ease 1s forwards;
+  opacity: 0;
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hide scrollbar for mobile navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 1023px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, a {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  /* Improve touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+} 
