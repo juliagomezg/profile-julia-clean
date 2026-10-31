@@ -1,4 +1,4 @@
-import { EMAIL, navLinks, socialLinks } from '@/content/site'
+import { WHATSAPP_URL, navLinks, socialLinks } from '@/content/site'
 
 export default function Footer() {
   return (
@@ -12,10 +12,12 @@ export default function Footer() {
             <em className="text-soft">con impacto social?</em>
           </h2>
           <a
-            href={`mailto:${EMAIL}`}
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-outline mt-5 flex items-center gap-3 self-start px-6 py-3 text-[12.5px] uppercase tracking-[0.14em]"
           >
-            Escribir un mensaje <span>→</span>
+            Escribir por WhatsApp <span>→</span>
           </a>
         </div>
         <div className="flex flex-col items-end gap-[22px] text-[12.5px] uppercase tracking-[0.14em] text-muted">

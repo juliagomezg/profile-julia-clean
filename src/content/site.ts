@@ -1,6 +1,6 @@
 import type { Discipline, MediaItem, NavLink, ProjectGroup, Stat } from '@/types'
 
-export const EMAIL = 'juliagomez19@gmail.com'
+export const WHATSAPP_URL = 'https://wa.me/5216621201552'
 export const NEWSLETTER_URL = 'https://juliagomezg.beehiiv.com/'
 
 export const navLinks: NavLink[] = [
@@ -12,7 +12,7 @@ export const navLinks: NavLink[] = [
 ]
 
 export const socialLinks: NavLink[] = [
-  { href: `mailto:${EMAIL}`, label: 'Email' },
+  { href: WHATSAPP_URL, label: 'WhatsApp' },
   { href: 'https://linkedin.com/in/juliagomezg', label: 'LinkedIn' },
   { href: 'https://github.com/juliagomezg', label: 'GitHub' },
   { href: 'https://instagram.com/juliagomezg', label: 'Instagram' },
