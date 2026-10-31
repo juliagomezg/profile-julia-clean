@@ -1,19 +1,23 @@
 import type { Metadata } from 'next'
-import { Inter, Crimson_Text } from 'next/font/google'
+import { Inter, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 import StructuredData from '@/components/StructuredData'
 
 const inter = Inter({ 
   subsets: ['latin'],
+  weight: ['400', '500'],
   variable: '--font-inter',
 })
 
-const crimsonText = Crimson_Text({ 
+const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: '400',
   style: ['normal', 'italic'],
-  variable: '--font-crimson',
+  variable: '--font-dm-serif',
 })
+
+// Aplica el tema guardado antes del primer pintado para evitar parpadeo
+const themeScript = `try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}`
 
 export const viewport = {
   width: 'device-width',
@@ -25,10 +29,10 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    default: 'Julia Gómez - Escritora Creativa & Desarrolladora',
+    default: 'Julia Gómez — Product Builder, Creativa & Escritora',
     template: '%s | Julia Gómez'
   },
-  description: 'Julia Gómez: Escritora y desarrolladora especializada en inteligencia artificial, narrativa digital y tecnología con impacto social. Portfolio 2025.',
+  description: 'Julia Gómez construye ecosistemas digitales desde cero — sitios, apps, sistemas y productos con identidad propia. Product builder, escritora y mentora desde Hermosillo, Sonora.',
   keywords: [
     'Julia Gómez',
     'AI researcher',
@@ -107,12 +111,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${crimsonText.variable}`}>
+    <html lang="es" className={`${inter.variable} ${dmSerif.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className="font-sans overflow-x-hidden">
         <StructuredData />
         {children}
       </body>

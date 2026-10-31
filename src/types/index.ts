@@ -1,28 +1,40 @@
-export interface ProjectType {
-  id: number
-  title: string
-  category: string
-  description: string
-  image: string
-  emoji: string
-  link: string
-}
-
-export interface StatType {
-  number: string
+export interface Stat {
+  n: string
   label: string
-  color: string
 }
 
-export interface ContactLinkType {
-  type: string
-  icon: string
-  url: string
-  bgColor: string
-  textColor?: string
+export interface Discipline {
+  num: string
+  l1: string
+  l2: string
+  text: string
 }
 
-export interface SpecialtyType {
-  name: string
-  type: string
-} 
+export interface Project {
+  num: string
+  title: string
+  text: string
+  meta: string
+  status: string
+  // Sin href, la fila se muestra con "—" y sin hover
+  href?: string
+}
+
+export interface ProjectGroup {
+  label: string
+  items: Project[]
+}
+
+export interface MediaItem {
+  num: string
+  kind: string
+  title: string
+  text: string
+  cta: string
+  href: string
+}
+
+export interface NavLink {
+  href: string
+  label: string
+}

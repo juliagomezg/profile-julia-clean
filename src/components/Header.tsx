@@ -1,101 +1,34 @@
-'use client'
+import { navLinks } from '@/content/site'
+import ThemeToggle from './ThemeToggle'
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-
-const Header = () => {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const headerHeight = 80
-      const targetPosition = element.offsetTop - headerHeight
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      })
-    }
-  }
-
+export default function Header() {
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border p-4 animate-slide-down transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/98 backdrop-blur-xl' 
-          : 'bg-white/95 backdrop-blur-xl'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <Link 
-          href="#" 
-          className="font-crimson text-2xl font-semibold text-primary-dark no-underline"
-        >
+    <header className="sticky top-0 z-20 bg-bg-blur backdrop-blur-[12px]">
+      <div className="flex items-center justify-between gap-6 border-b border-line px-gutter py-3">
+        <a href="#top" className="flex-none whitespace-nowrap font-serif text-[21px] tracking-[-0.01em] text-ink">
           Julia Gómez
-        </Link>
-        
-        <ul className="hidden md:flex gap-8 list-none">
-          <li>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              Proyectos
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('currently-working')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              En Curso
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('media')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              Media
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('blog')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              Newsletter
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              Sobre mí
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-text-secondary no-underline text-sm font-normal tracking-wide transition-colors duration-300 hover:text-accent cursor-pointer bg-transparent border-none"
-            >
-              Contacto
-            </button>
-          </li>
-        </ul>
-      </nav>
+        </a>
+        <nav className="scrollbar-hide flex min-w-0 flex-auto [justify-content:safe_center] gap-[clamp(14px,2vw,32px)] overflow-x-auto text-[12.5px] uppercase tracking-[clamp(0.08em,1vw,0.16em)] text-muted">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href} className="whitespace-nowrap transition-colors hover:text-ink">
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <div className="flex flex-none items-center gap-5">
+          <ThemeToggle />
+          <a
+            href="#contacto"
+            className="btn-outline whitespace-nowrap px-[17px] py-[9px] text-[12.5px] uppercase tracking-[0.16em]"
+          >
+            Contacto
+          </a>
+        </div>
+      </div>
+      <div className="flex flex-wrap justify-between gap-x-6 gap-y-1.5 border-b border-line px-gutter py-[11px] text-xs uppercase tracking-[0.16em] text-faint">
+        <span>Hermosillo, Sonora · México</span>
+        <span>Product builder · Creativa · Escritora</span>
+      </div>
     </header>
   )
 }
-
-export default Header 

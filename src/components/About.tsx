@@ -1,104 +1,55 @@
-'use client'
+import { highlights, stats } from '@/content/site'
+import SectionHeader from './SectionHeader'
 
-import { useEffect, useRef } from 'react'
-
-const About = () => {
-  const observerRef = useRef<IntersectionObserver | null>(null)
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated')
-        }
-      })
-    }, observerOptions)
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      if (observerRef.current) {
-        observerRef.current.observe(el)
-      }
-    })
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect()
-      }
-    }
-  }, [])
-
-  const stats = [
-    { number: "3+", label: "Años en IA", color: "text-accent" },
-    { number: "15+", label: "Proyectos", color: "text-accent-secondary" },
-    { number: "2.4K", label: "Seguidores", color: "text-accent-coral" },
-    { number: "100+", label: "Mentees", color: "text-accent" }
-  ]
-
+export default function About() {
   return (
-    <section 
-      id="about" 
-      className="relative py-32 px-8"
-      style={{
-        background: 'linear-gradient(135deg, var(--bg-light), rgba(255, 226, 113, 0.1))'
-      }}
-    >
-      <div 
-        className="absolute top-0 right-0 w-80 h-full opacity-20 z-10"
-        style={{
-          backgroundImage: 'url(/img/piezas.png)',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'top right'
-        }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-24 items-start relative z-20">
-        <div className="lg:sticky lg:top-32 animate-on-scroll">
-          <h2 className="font-crimson text-5xl lg:text-6xl font-semibold text-primary-dark mb-8 leading-tight cursor-pointer transition-all duration-500 relative group">
-            <span className="relative">
-              Sobre mí
-              <span className="absolute -bottom-4 left-0 w-0 h-1 bg-red-disruptive transition-all duration-700 ease-out group-hover:w-full"></span>
+    <section id="sobre-mi" className="flex flex-col gap-12 pb-[72px] pt-14">
+      <SectionHeader label="Sobre mí" />
+      <div className="grid-lines grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] border border-line">
+        <div className="flex flex-col gap-11 bg-bg px-10 py-11">
+          <div className="relative pt-14">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-1.5 top-0 font-serif text-[120px] leading-[0.9] tracking-[-0.03em] text-num opacity-[.45]"
+            >
+              JG
             </span>
-          </h2>
-          
-          <p className="text-lg text-text-secondary leading-relaxed mb-12">
-            Escritora y desarrolladora que combina storytelling con tecnología para
-            crear experiencias que conectan tradición y modernidad. Especializada en inteligencia artificial, 
-            enfocada en explorar cómo la tecnología puede amplificar la creatividad humana 
-            y generar impacto social positivo.
-          </p>
-          
-          <p className="text-lg text-text-secondary leading-relaxed mb-12">
-            Mi trabajo se sitúa en la intersección entre narrativa, código y machine learning, 
-            siempre con una perspectiva ética y un compromiso con la inclusión tecnológica.
-          </p>
-        </div>
-
-        <div className="lg:col-span-2 animate-on-scroll">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {stats.map((stat, index) => (
-              <div 
-                key={index}
-                className="text-center p-8 bg-pure-white rounded-lg border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className={`font-crimson text-4xl font-semibold ${stat.color} block mb-2`}>
-                  {stat.number}
-                </span>
-                <span className="text-sm text-text-secondary uppercase tracking-wide">
-                  {stat.label}
-                </span>
+            <p className="relative text-[16.5px] leading-[1.65] text-body [text-wrap:pretty]">
+              Soy de las personas que cuando encuentran un problema interesante, ya están pensando en cómo construir la
+              solución. A veces eso es para un cliente. A veces es para mí misma. Siempre tiene{' '}
+              <strong className="font-medium text-ink">identidad</strong>,{' '}
+              <strong className="font-medium text-ink">propósito</strong> y mucha creatividad.
+            </p>
+          </div>
+          <div className="grid-lines grid-cols-2">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col gap-1.5 bg-bg px-6 py-[26px]">
+                <span className="font-serif text-[28px] leading-[1.1] text-ink">{s.n}</span>
+                <span className="text-xs uppercase tracking-[0.14em] text-faint">{s.label}</span>
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col gap-[22px] bg-bg px-10 py-11">
+          <p className="text-base leading-[1.7] text-body [text-wrap:pretty]">
+            Soy Julia Gómez — product builder, escritora y mentora desde Hermosillo, Sonora. Construyo la presencia digital
+            completa de negocios que tienen historia y algo que decir: su sitio, su app, su sistema, todo con identidad
+            propia.
+          </p>
+          <p className="text-sm leading-[1.7] text-muted [text-wrap:pretty]">
+            También tengo mis propios productos — algunos vivos, uno en stealth, otro que construí porque no quería comprar
+            la versión comercial. Y escribo, porque la narrativa es parte de cómo pienso y cómo construyo.
+          </p>
+          <ul className="mt-9 flex flex-col gap-4 border-t border-line pt-9">
+            {highlights.map((h) => (
+              <li key={h} className="flex gap-4 text-[14.5px] leading-[1.5] text-body">
+                <span className="text-accent">—</span>
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
   )
 }
-
-export default About 

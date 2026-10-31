@@ -8,22 +8,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary-dark': '#2d2d2d',
-        'text-primary': '#333333',
-        'text-secondary': '#666666',
-        'accent': '#5a91ef',
-        'accent-secondary': '#ffe271',
-        'accent-coral': '#f77a7a',
-        'red-disruptive': '#dd1928',
-        'pure-white': '#ffffff',
-        'bg-light': '#fafcff',
-        'border': '#e8f0ff',
+        bg: 'var(--bg)',
+        'bg-blur': 'var(--bg-blur)',
+        bg2: 'var(--bg2)',
+        line: 'var(--line)',
+        line2: 'var(--line2)',
+        ink: 'var(--ink)',
+        body: 'var(--body)',
+        soft: 'var(--soft)',
+        muted: 'var(--muted)',
+        faint: 'var(--faint)',
+        num: 'var(--num)',
+        accent: 'var(--accent)',
       },
       fontFamily: {
-        'crimson': ['Crimson Text', 'serif'],
-        'inter': ['Inter', 'sans-serif'],
+        serif: ['var(--font-dm-serif)', 'serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      maxWidth: {
+        page: '1280px',
+      },
+      spacing: {
+        gutter: 'clamp(20px, 3.5vw, 44px)',
       },
     },
   },
   plugins: [],
-} 
+}
