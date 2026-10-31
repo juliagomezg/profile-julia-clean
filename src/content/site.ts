@@ -1,6 +1,7 @@
 import type { Discipline, MediaItem, NavLink, ProjectGroup, Stat } from '@/types'
 
-export const WHATSAPP_URL = 'https://wa.me/5216621201552'
+const WHATSAPP_MESSAGE = 'Hola Julia 👋 Vengo de juliagomezg.com. Tengo un proyecto y me gustaría contarte de qué se trata.'
+export const WHATSAPP_URL = `https://wa.me/5216621201552?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 export const NEWSLETTER_URL = 'https://juliagomezg.beehiiv.com/'
 
 export const navLinks: NavLink[] = [
