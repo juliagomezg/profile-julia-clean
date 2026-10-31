@@ -68,7 +68,7 @@ export default function Newsletter() {
             )}
             {status === 'ok' && (
               <span role="status" className="text-[12.5px] text-accent">
-                Termina tu suscripción en la pestaña que se abrió.
+                Ya casi: confirma en la pestaña nueva y explora las ediciones anteriores.
               </span>
             )}
             <button type="submit" className="btn-outline bg-transparent px-5 py-[11px] text-[12.5px] uppercase tracking-[0.14em]">
